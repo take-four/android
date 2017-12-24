@@ -1,0 +1,57 @@
+apply plugin: 'com.android.application'
+
+android {
+
+    compileSdkVersion 26
+
+    defaultConfig {
+        applicationId "com.themoment"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+            debuggable true
+            minifyEnabled false
+        }
+
+        stage {
+            applicationIdSuffix ".stage"
+            debuggable true
+            minifyEnabled false
+        }
+
+        release {
+            applicationIdSuffix ".release"
+            debuggable false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //supportLibrary
+    implementation deps.supportLib.multidex
+    implementation deps.supportLib.v4
+    implementation deps.supportLib.compat
+    implementation deps.supportLib.recyclerview
+    implementation deps.supportLib.design
+    implementation deps.supportLib.constraint
+
+    //testLibrary
+    testImplementation deps.test.junit
+    androidTestImplementation deps.test.runner
+    androidTestImplementation deps.test.espressoCore
+}

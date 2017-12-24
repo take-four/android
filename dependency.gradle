@@ -1,0 +1,61 @@
+ext.ver = [
+        supportLib : '27.0.2',
+        stetho     : '1.5.0',
+        okhttp     : '3.9.1',
+        dagger     : '2.11',
+        butterknife: '9.0.0-SNAPSHOT',
+        stetho     : '1.5.0',
+        junit      : '4.12',
+        runner     : '1.0.1',
+        espresso   : "3.0.1"
+]
+
+ext.deps = [
+        supportLib: [
+                multidex    : 'com.android.support:multidex:1.0.2',
+                v4          : "com.android.support:support-v4:${ver.supportLib}",
+                compat      : "com.android.support:support-compat:${ver.supportLib}",
+                recyclerview: "com.android.support:recyclerview-v7:${ver.supportLib}",
+                design      : "com.android.support:design:${ver.supportLib}",
+                constraint  : 'com.android.support.constraint:constraint-layout:1.0.2'
+
+        ],
+
+        normal    : [
+                // lombok
+                lombok                  : 'org.projectlombok:lombok:1.16.18',
+                // gson
+                gson                    : 'com.google.code.gson:gson:2.8.2',
+
+                // butterknife
+                butterknife             : "com.jakewharton:butterknife:${ver.butterknife}",
+                butterknifeCompiler     : "com.jakewharton:butterknife-compiler:${ver.butterknife}",
+
+                // retrofit
+                retrofit                : "com.squareup.retrofit2:retrofit:${ver.retrofit}",
+                retrofitAdapterRx       : "com.squareup.retrofit2:adapter-rxjava2:${ver.retrofit}",
+                retrofitConverterScalars: "com.squareup.retrofit2:converter-scalars:${ver.retrofit}",
+                retrofitConverterGson   : "com.squareup.retrofit2:converter-gson:${ver.retrofit}",
+
+                // reactive
+                rxjava                  : 'io.reactivex.rxjava2:rxjava:2.1.6',
+                rxandroid               : 'io.reactivex.rxjava2:rxandroid:2.0.1',
+                rxrelay                 : 'com.jakewharton.rxrelay2:rxrelay:2.0.0',
+
+                // dagger
+                dagger                  : "com.google.dagger:dagger:${ver.dagger}",
+                daggerCompiler          : "com.google.dagger:dagger-compiler:${ver.dagger}",
+                daggerAndroid           : "com.google.dagger:dagger-android:${ver.dagger}",
+                daggerAndroidSupport    : "com.google.dagger:dagger-android-support:${ver.dagger}",
+                daggerAndroidProcessor  : "com.google.dagger:dagger-android-processor:${ver.dagger}",
+
+                stetho                  : "com.facebook.stetho:stetho:${ver.stetho}",
+                stethoOkhttp3           : "com.facebook.stetho:stetho-okhttp3:${ver.stetho}"
+        ],
+
+        test      : [
+                junit       : "junit:junit:${ver.junit}",
+                runner      : "com.android.support.test:runner:${ver.runner}",
+                espressoCore: "com.android.support.test.espresso:espresso-core:${ver.espresso}"
+        ]
+]
