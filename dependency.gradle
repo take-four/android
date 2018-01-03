@@ -1,13 +1,15 @@
 ext.ver = [
-        supportLib : '27.0.2',
-        stetho     : '1.5.0',
-        okhttp     : '3.9.1',
-        dagger     : '2.11',
-        butterknife: '9.0.0-SNAPSHOT',
-        stetho     : '1.5.0',
-        junit      : '4.12',
-        runner     : '1.0.1',
-        espresso   : "3.0.1"
+        supportLib    : '27.0.2',
+        stetho        : '1.5.0',
+        okhttp        : '3.9.1',
+        dagger        : '2.11',
+        butterknife   : '9.0.0-SNAPSHOT',
+        stetho        : '1.5.0',
+        slf4j         : '1.7.25',
+        logbackAndroid: '1.1.1-6',
+        junit         : '4.12',
+        runner        : '1.0.1',
+        espresso      : '3.0.1'
 ]
 
 ext.deps = [
@@ -18,7 +20,6 @@ ext.deps = [
                 recyclerview: "com.android.support:recyclerview-v7:${ver.supportLib}",
                 design      : "com.android.support:design:${ver.supportLib}",
                 constraint  : 'com.android.support.constraint:constraint-layout:1.0.2'
-
         ],
 
         normal    : [
@@ -49,8 +50,14 @@ ext.deps = [
                 daggerAndroidSupport    : "com.google.dagger:dagger-android-support:${ver.dagger}",
                 daggerAndroidProcessor  : "com.google.dagger:dagger-android-processor:${ver.dagger}",
 
+                // stetho
                 stetho                  : "com.facebook.stetho:stetho:${ver.stetho}",
-                stethoOkhttp3           : "com.facebook.stetho:stetho-okhttp3:${ver.stetho}"
+                stethoOkhttp3           : "com.facebook.stetho:stetho-okhttp3:${ver.stetho}",
+
+                // android log
+                slf4j                   : "org.slf4j:slf4j-api:${ver.slf4j}",
+                logbackAndroidCore      : "com.github.tony19:logback-android-core:${ver.logbackAndroid}",
+                logbackAndroidClassic   : "com.github.tony19:logback-android-classic:${ver.logbackAndroid}"
         ],
 
         test      : [

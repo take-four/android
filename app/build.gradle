@@ -5,12 +5,12 @@ android {
     compileSdkVersion 26
 
     defaultConfig {
-        applicationId "com.themoment"
+        applicationId "com.take4.themoment"
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "android.com.take4.themoment.support.test.runner.AndroidJUnitRunner"
     }
 
     dexOptions {
@@ -37,6 +37,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
@@ -50,8 +54,23 @@ dependencies {
     implementation deps.supportLib.design
     implementation deps.supportLib.constraint
 
+    //slf4j
+    implementation deps.normal.slf4j
+
+    //lombok
+    compileOnly deps.normal.lombok
+    annotationProcessor deps.normal.lombok
+
+    //dagger
+    implementation deps.normal.dagger
+    annotationProcessor deps.normal.daggerCompiler
+    implementation deps.normal.daggerAndroid
+    implementation deps.normal.daggerAndroidSupport
+    annotationProcessor deps.normal.daggerAndroidProcessor
+
     //testLibrary
     testImplementation deps.test.junit
     androidTestImplementation deps.test.runner
     androidTestImplementation deps.test.espressoCore
+
 }
