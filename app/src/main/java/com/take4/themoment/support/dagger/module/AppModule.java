@@ -11,7 +11,7 @@ import dagger.Provides;
 /**
  * Created by jaehyunpark on 2017. 12. 26..
  */
-@Module(includes = ActivityBindingModule.class)
+@Module
 public class AppModule {
 
 	private TheMomentApplication application;

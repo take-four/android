@@ -2,6 +2,8 @@ package com.take4.themoment;
 
 import javax.inject.Singleton;
 
+import com.take4.themoment.account.AccountManager;
+import com.take4.themoment.support.dagger.module.ActivityBindingModule;
 import com.take4.themoment.support.dagger.module.AppModule;
 import dagger.Component;
 import dagger.android.support.AndroidSupportInjectionModule;
@@ -13,11 +15,14 @@ import dagger.android.support.AndroidSupportInjectionModule;
 @Singleton
 @Component(modules = {
 	AppModule.class,
+	ActivityBindingModule.class,
 	AndroidSupportInjectionModule.class})
 public interface AppComponent {
 
 	void inject(TheMomentApplication application);
 
 	TheMomentApplication getTheMomentApplication();
+
+	AccountManager getAccountManager();
 }
 

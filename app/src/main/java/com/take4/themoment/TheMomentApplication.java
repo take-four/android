@@ -4,7 +4,6 @@ import javax.inject.Inject;
 
 import android.app.Activity;
 import android.support.multidex.MultiDexApplication;
-import com.take4.themoment.support.dagger.component.DaggerAppComponent;
 import com.take4.themoment.support.dagger.module.AppModule;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
