@@ -5,13 +5,11 @@ import javax.inject.Inject;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import com.take4.themoment.MainActivity;
 import com.take4.themoment.R;
 import com.take4.themoment.account.AccountManager;
-import com.take4.themoment.account.LoginActivity;
 import com.take4.themoment.base.BaseActivity;
 import com.take4.themoment.splash.SplashActivity;
-import com.take4.themoment.support.dagger.scope.ActivityScope;
-import dagger.Binds;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -23,7 +21,6 @@ public class EntryActivity extends BaseActivity {
 	AccountManager accountManager;
 
 	private boolean isSplashDone = false;
-	private boolean accountReady = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +36,19 @@ public class EntryActivity extends BaseActivity {
 
 	private void moveToActivity() {
 		// TODO: 2018. 1. 5. tutorial check
-		if (!accountReady) {
+		if (!accountManager.isSignedIn()) {
 			requestLoginIfNeed();
+		} else {
+			startMainActivity();
 		}
 	}
 
 	private void requestLoginIfNeed() {
 		accountManager.startLoginActivityForResult(this, LOGIN_REQUEST_CODE);
+	}
+
+	private void startMainActivity() {
+		startActivity(MainActivity.createIntent(this));
 	}
 
 	@Override
@@ -66,7 +69,6 @@ public class EntryActivity extends BaseActivity {
 
 			case LOGIN_REQUEST_CODE:
 				log.debug("Login Success");
-				accountReady = true;
 				moveToActivity();
 				break;
 		}

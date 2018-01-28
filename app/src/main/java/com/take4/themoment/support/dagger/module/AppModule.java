@@ -11,7 +11,10 @@ import dagger.Provides;
 /**
  * Created by jaehyunpark on 2017. 12. 26..
  */
-@Module
+@Module(includes = {
+	NetworkModule.class,
+	SupportModule.class
+})
 public class AppModule {
 
 	private TheMomentApplication application;

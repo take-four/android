@@ -2,7 +2,11 @@ package com.take4.themoment;
 
 import javax.inject.Singleton;
 
+
+import com.google.gson.Gson;
 import com.take4.themoment.account.AccountManager;
+import com.take4.themoment.api.HttpApiClient;
+import com.take4.themoment.support.bus.EventBusProvider;
 import com.take4.themoment.support.dagger.module.ActivityBindingModule;
 import com.take4.themoment.support.dagger.module.AppModule;
 import dagger.Component;
@@ -24,5 +28,13 @@ public interface AppComponent {
 	TheMomentApplication getTheMomentApplication();
 
 	AccountManager getAccountManager();
+
+	//network module
+	HttpApiClient getHttpApiClient();
+
+	//support module
+	Gson getGson();
+
+	EventBusProvider.EventBus getEventBus();
 }
 

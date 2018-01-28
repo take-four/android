@@ -1,6 +1,7 @@
 package com.take4.themoment.support.dagger.module;
 
-import com.take4.themoment.account.LoginActivity;
+import com.take4.themoment.MainActivity;
+import com.take4.themoment.account.LogInActivity;
 import com.take4.themoment.entry.EntryActivity;
 import com.take4.themoment.support.dagger.scope.ActivityScope;
 import dagger.Module;
@@ -17,6 +18,10 @@ public abstract class ActivityBindingModule {
 	abstract EntryActivity contributesEntryActivity();
 
 	@ActivityScope
+	@ContributesAndroidInjector(modules = MainModule.class)
+	abstract MainActivity contributesMainActivity();
+
+	@ActivityScope
 	@ContributesAndroidInjector(modules = LoginModule.class)
-	abstract LoginActivity contributesLoginActivity();
+	abstract LogInActivity contributesLoginActivity();
 }

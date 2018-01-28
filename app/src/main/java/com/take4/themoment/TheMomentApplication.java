@@ -2,8 +2,11 @@ package com.take4.themoment;
 
 import javax.inject.Inject;
 
+import net.danlew.android.joda.JodaTimeAndroid;
+
 import android.app.Activity;
 import android.support.multidex.MultiDexApplication;
+import com.facebook.stetho.Stetho;
 import com.take4.themoment.support.dagger.module.AppModule;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
@@ -33,6 +36,10 @@ public class TheMomentApplication extends MultiDexApplication implements HasActi
 		inject();
 
 		initAppComponentContainer();
+
+		Stetho.initializeWithDefaults(this);
+
+		JodaTimeAndroid.init(this);
 	}
 
 	private void initApplicationComponent() {
