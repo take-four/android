@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">the_moment_android</string>
 
+    <string name="back_to_exit">App will close if you tap the back button again</string>
+
+    <string name="google_login_text">Login with Google</string>
+
     <string name="facebook_app_id">340509169758654</string>
+    <string name="facebook_login_text">Login with Facebook</string>
     <string name="fb_login_protocol_scheme">fb340509169758654</string>
 </resources>

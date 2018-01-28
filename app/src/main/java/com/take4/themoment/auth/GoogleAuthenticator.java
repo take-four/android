@@ -8,7 +8,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.FacebookAuthProvider;
+import com.google.firebase.auth.GoogleAuthProvider;
+import com.take4.themoment.AppComponentContainer;
+import com.take4.themoment.R;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -16,21 +18,18 @@ import lombok.extern.slf4j.Slf4j;
  */
 
 @Slf4j
-public class GoogleAuthenticator extends BaseAuthenticator {
-
-	private final Activity activity;
-
+public class GoogleAuthenticator extends FirebaseAuthenticator {
 	private GoogleApiClient googleApiClient;
-
 	private String idToken;
 
-	public GoogleAuthenticator(Activity activity) {
-		this.activity = activity;
-
-		initGoogleApiClient();
+	@Override
+	public void signIn(Activity activity) {
+		initGoogleApiClient(activity);
+		Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
+		activity.startActivityForResult(signInIntent, AccountRequestCode.EXTERNAL_ACCOUNT_GOOGLE.getCode());
 	}
 
-	private void initGoogleApiClient() {
+	private void initGoogleApiClient(Activity activity) {
 		googleApiClient = new GoogleApiClient.Builder(activity)
 			.addApi(Auth.GOOGLE_SIGN_IN_API, initGoogleSignInOption())
 			.build();
@@ -41,12 +40,6 @@ public class GoogleAuthenticator extends BaseAuthenticator {
 			.requestIdToken(getClientId())
 			.requestEmail()
 			.build();
-	}
-
-	@Override
-	public void signIn() {
-		Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
-		activity.startActivityForResult(signInIntent, AccountRequestCode.EXTERNAL_ACCOUNT_GOOGLE.getCode());
 	}
 
 	public void onActivityResult(Intent data) {
@@ -65,7 +58,7 @@ public class GoogleAuthenticator extends BaseAuthenticator {
 			// TODO: 2018. 1. 6. error 처리
 		} else {
 			idToken = account.getIdToken();
-			authorizeFromFirebase();
+			requestJwtToken();
 		}
 		cleanUp();
 	}
@@ -73,10 +66,10 @@ public class GoogleAuthenticator extends BaseAuthenticator {
 	@Override
 	AuthCredential getAuthCredential() {
 		if (idToken == null) {
-			log.debug("Couldn't get id token.");
+			log.debug("Couldn't get google id token.");
 			return null;
 		}
-		return FacebookAuthProvider.getCredential(idToken);
+		return GoogleAuthProvider.getCredential(idToken, null);
 	}
 
 	private void cleanUp() {
@@ -87,6 +80,6 @@ public class GoogleAuthenticator extends BaseAuthenticator {
 	}
 
 	private String getClientId() {
-		return AccountClientInfo.GOOGLE_SERVER_CLIENT_ID;
+		return AppComponentContainer.get().getApplicationContext().getString(R.string.default_web_client_id);
 	}
 }
