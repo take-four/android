@@ -5,12 +5,12 @@ android {
     compileSdkVersion 26
 
     defaultConfig {
-        applicationId "com.themoment"
-        minSdkVersion 15
+        applicationId "com.take4.themoment"
+        minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "android.com.take4.themoment.support.test.runner.AndroidJUnitRunner"
     }
 
     dexOptions {
@@ -37,12 +37,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+    sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/logback/assets/'] } }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    //supportLibrary
+    // supportLibrary
     implementation deps.supportLib.multidex
     implementation deps.supportLib.v4
     implementation deps.supportLib.compat
@@ -50,8 +55,78 @@ dependencies {
     implementation deps.supportLib.design
     implementation deps.supportLib.constraint
 
-    //testLibrary
+    // log
+    implementation deps.normal.slf4j
+    debugImplementation(deps.normal.logbackAndroidCore) {
+        exclude group: 'com.google.android'
+        exclude group: 'commons-logging'
+    }
+    debugImplementation(deps.normal.logbackAndroidClassic) {
+        exclude group: 'com.google.android'
+        exclude group: 'commons-logging'
+    }
+    stageImplementation(deps.normal.logbackAndroidCore) {
+        exclude group: 'com.google.android'
+        exclude group: 'commons-logging'
+    }
+    stageImplementation(deps.normal.logbackAndroidClassic) {
+        exclude group: 'com.google.android'
+        exclude group: 'commons-logging'
+    }
+
+    // butterKnife
+    implementation deps.normal.butterknife
+    annotationProcessor deps.normal.butterknifeCompiler
+
+    // lombok
+    compileOnly deps.normal.lombok
+    annotationProcessor deps.normal.lombok
+
+    // dagger
+    implementation deps.normal.dagger
+    annotationProcessor deps.normal.daggerCompiler
+    implementation deps.normal.daggerAndroid
+    implementation deps.normal.daggerAndroidSupport
+    annotationProcessor deps.normal.daggerAndroidProcessor
+
+    // firebase
+    implementation deps.normal.firebaseCore
+    implementation deps.normal.firebaseAuth
+    implementation deps.normal.firebaseUI
+
+    // google
+    implementation deps.normal.googleAuth
+
+    // facebook sdk
+    implementation deps.normal.facebookSdk
+
+    // gson
+    implementation deps.normal.gson
+
+    // retrofit
+    implementation deps.normal.retrofit
+    implementation deps.normal.retrofitAdapterRx
+    implementation deps.normal.retrofitConverterScalars
+    implementation deps.normal.retrofitConverterGson
+
+    // okhttp
+    implementation deps.normal.okhttp
+    implementation deps.normal.okhttpLoggingInterceptor
+
+    // stetho
+    implementation deps.normal.stetho
+    implementation deps.normal.stethoOkhttp3
+
+    // otto
+    implementation deps.normal.otto
+
+    // joda time
+    implementation deps.normal.jodaAndroid
+
+    // testLibrary
     testImplementation deps.test.junit
     androidTestImplementation deps.test.runner
     androidTestImplementation deps.test.espressoCore
+
 }
+apply plugin: 'com.google.gms.google-services'
