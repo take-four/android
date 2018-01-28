@@ -33,7 +33,7 @@
         <activity
                 android:name=".splash.SplashActivity"
                 android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".account.LogInActivity" />
+        <activity android:name=".account.LoginActivity" />
 
         <activity
                 android:name="com.facebook.FacebookActivity"

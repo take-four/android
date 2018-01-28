@@ -37,7 +37,7 @@ public class AccountManager {
 	}
 
 	public void startLoginActivityForResult(Activity activity, int requestCode) {
-		Intent intent = LogInActivity.createIntent(activity);
+		Intent intent = LoginActivity.createIntent(activity);
 		activity.startActivityForResult(intent, requestCode);
 	}
 

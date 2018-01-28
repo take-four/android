@@ -10,13 +10,10 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
-import android.view.Gravity;
-import android.view.View;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.common.SignInButton;
 import com.squareup.otto.Subscribe;
 import com.take4.themoment.R;
@@ -32,7 +29,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 
 @Slf4j
-public class LogInActivity extends BaseActivity {
+public class LoginActivity extends BaseActivity {
 	private Subscriber subscriber = new Subscriber();
 
 	@Inject
@@ -55,7 +52,7 @@ public class LogInActivity extends BaseActivity {
 	private FacebookAuthenticator facebookAuthenticator;
 
 	public static Intent createIntent(@NonNull Activity activity) {
-		Intent intent = new Intent(activity, LogInActivity.class);
+		Intent intent = new Intent(activity, LoginActivity.class);
 		return intent;
 	}
 
@@ -72,7 +69,7 @@ public class LogInActivity extends BaseActivity {
 	}
 
 	private void initGoogleLoginButton() {
-		TextView textView = (TextView) googleLoginButton.getChildAt(0);
+		TextView textView = (TextView)googleLoginButton.getChildAt(0);
 		textView.setText(getString(R.string.google_login_text));
 		textView.setPadding(0, 0, 1, 0);
 		textView.setTextSize(getResources().getDimension(R.dimen.login_text_size));
