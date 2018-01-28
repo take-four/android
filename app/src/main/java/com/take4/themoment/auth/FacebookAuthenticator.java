@@ -17,44 +17,42 @@ import lombok.extern.slf4j.Slf4j;
  */
 
 @Slf4j
-public class FacebookAuthenticator extends BaseAuthenticator {
+public class FacebookAuthenticator extends FirebaseAuthenticator {
+	private static String EMAIL = "email";
+	private static String PERMISSION_PUBLIC_PROFILE = "public_profile";
 
-	private final Activity activity;
 	private String accessToken;
 
-	private CallbackManager mCallbackManager;
+	private CallbackManager callbackManager;
 
-	public FacebookAuthenticator(Activity activity) {
-		this.activity = activity;
-	}
+	private FacebookCallback<LoginResult> facebookCallback = new FacebookCallback<LoginResult>() {
+		@Override
+		public void onSuccess(LoginResult loginResult) {
+			accessToken = loginResult.getAccessToken().getToken();
+			requestJwtToken();
+		}
+
+		@Override
+		public void onCancel() {
+			log.debug("facebook:onCancel :");
+		}
+
+		@Override
+		public void onError(FacebookException error) {
+			log.debug("facebook:onError", error);
+		}
+	};
 
 	@Override
-	public void signIn() {
-		mCallbackManager = CallbackManager.Factory.create();
+	public void signIn(Activity activity) {
+		callbackManager = CallbackManager.Factory.create();
 		LoginButton loginButton = activity.findViewById(R.id.btn_facebook_login);
-		loginButton.setReadPermissions("email", "public_profile");
-		loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
-			@Override
-			public void onSuccess(LoginResult loginResult) {
-				log.debug("facebook:onSuccess : {}", loginResult);
-				accessToken = loginResult.getAccessToken().getToken();
-				authorizeFromFirebase();
-			}
-
-			@Override
-			public void onCancel() {
-				log.debug("facebook:onCancel :");
-			}
-
-			@Override
-			public void onError(FacebookException error) {
-				log.debug("facebook:onError", error);
-			}
-		});
+		loginButton.setReadPermissions(EMAIL, PERMISSION_PUBLIC_PROFILE);
+		loginButton.registerCallback(callbackManager, facebookCallback);
 	}
 
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		mCallbackManager.onActivityResult(requestCode, resultCode, data);
+		callbackManager.onActivityResult(requestCode, resultCode, data);
 	}
 
 	@Override
