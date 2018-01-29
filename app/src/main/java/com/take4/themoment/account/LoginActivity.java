@@ -17,7 +17,7 @@ import butterknife.OnClick;
 import com.google.android.gms.common.SignInButton;
 import com.squareup.otto.Subscribe;
 import com.take4.themoment.R;
-import com.take4.themoment.auth.AccountRequestCode;
+import com.take4.themoment.auth.AuthRequestCode;
 import com.take4.themoment.auth.FacebookAuthenticator;
 import com.take4.themoment.auth.GoogleAuthenticator;
 import com.take4.themoment.base.BaseActivity;
@@ -97,11 +97,11 @@ public class LoginActivity extends BaseActivity {
 			return;
 		}
 
-		if (requestCode == AccountRequestCode.EXTERNAL_ACCOUNT_GOOGLE.getCode()) {
+		if (requestCode == AuthRequestCode.EXTERNAL_ACCOUNT_GOOGLE.getCode()) {
 			log.debug("Google login success");
 			googleAuthenticator.onActivityResult(data);
 
-		} else if (requestCode == AccountRequestCode.EXTERNAL_ACCOUNT_FACEBOOK.getCode()) {
+		} else if (requestCode == AuthRequestCode.EXTERNAL_ACCOUNT_FACEBOOK.getCode()) {
 			log.debug("Facebook login success");
 			facebookAuthenticator.onActivityResult(requestCode, resultCode, data);
 		}

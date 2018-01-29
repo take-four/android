@@ -18,15 +18,14 @@ import lombok.extern.slf4j.Slf4j;
  */
 
 @Slf4j
-public class GoogleAuthenticator extends FirebaseAuthenticator {
+public class GoogleAuthenticator {
 	private GoogleApiClient googleApiClient;
 	private String idToken;
 
-	@Override
 	public void signIn(Activity activity) {
 		initGoogleApiClient(activity);
 		Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
-		activity.startActivityForResult(signInIntent, AccountRequestCode.EXTERNAL_ACCOUNT_GOOGLE.getCode());
+		activity.startActivityForResult(signInIntent, AuthRequestCode.EXTERNAL_ACCOUNT_GOOGLE.getCode());
 	}
 
 	private void initGoogleApiClient(Activity activity) {
@@ -58,13 +57,12 @@ public class GoogleAuthenticator extends FirebaseAuthenticator {
 			// TODO: 2018. 1. 6. error 처리
 		} else {
 			idToken = account.getIdToken();
-			requestJwtToken();
+			FirebaseAuthUtils.requestJwtToken(getAuthCredential());
 		}
 		cleanUp();
 	}
 
-	@Override
-	AuthCredential getAuthCredential() {
+	private AuthCredential getAuthCredential() {
 		if (idToken == null) {
 			log.debug("Couldn't get google id token.");
 			return null;

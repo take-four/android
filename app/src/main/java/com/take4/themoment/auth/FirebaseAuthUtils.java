@@ -2,30 +2,22 @@ package com.take4.themoment.auth;
 
 import java.util.concurrent.Executors;
 
-import android.app.Activity;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GetTokenResult;
 import com.take4.themoment.account.LoginEvent;
 import com.take4.themoment.support.bus.EventBusProvider;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * Created by jaehyunpark on 2018. 1. 5..
+ * Created by jaehyunpark on 2018. 1. 29..
  */
 
 @Slf4j
-public abstract class FirebaseAuthenticator {
-	abstract AuthCredential getAuthCredential();
-
-	abstract void signIn(Activity activity);
-
-	void requestJwtToken() {
-		AuthCredential credential = getAuthCredential();
+public class FirebaseAuthUtils {
+	public static void requestJwtToken(AuthCredential authCredential) {
 		FirebaseAuth.getInstance()
-			.signInWithCredential(credential)
+			.signInWithCredential(authCredential)
 			.addOnCompleteListener(Executors.newSingleThreadExecutor(), task -> requestUserIdToken())
 			.addOnFailureListener(Executors.newSingleThreadExecutor(), task -> log.debug("Authentication was Failed."));
 	}

@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 
 @Slf4j
-public class FacebookAuthenticator extends FirebaseAuthenticator {
+public class FacebookAuthenticator {
 	private static String EMAIL = "email";
 	private static String PERMISSION_PUBLIC_PROFILE = "public_profile";
 
@@ -29,7 +29,7 @@ public class FacebookAuthenticator extends FirebaseAuthenticator {
 		@Override
 		public void onSuccess(LoginResult loginResult) {
 			accessToken = loginResult.getAccessToken().getToken();
-			requestJwtToken();
+			FirebaseAuthUtils.requestJwtToken(getAuthCredential());
 		}
 
 		@Override
@@ -43,7 +43,6 @@ public class FacebookAuthenticator extends FirebaseAuthenticator {
 		}
 	};
 
-	@Override
 	public void signIn(Activity activity) {
 		callbackManager = CallbackManager.Factory.create();
 		LoginButton loginButton = activity.findViewById(R.id.btn_facebook_login);
@@ -55,8 +54,7 @@ public class FacebookAuthenticator extends FirebaseAuthenticator {
 		callbackManager.onActivityResult(requestCode, resultCode, data);
 	}
 
-	@Override
-	AuthCredential getAuthCredential() {
+	private AuthCredential getAuthCredential() {
 		if (accessToken == null) {
 			log.debug("Couldn't get access token.");
 			return null;

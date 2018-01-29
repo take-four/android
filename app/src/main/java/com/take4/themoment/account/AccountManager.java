@@ -10,7 +10,7 @@ import android.app.Activity;
 import android.content.Intent;
 import com.take4.themoment.AppComponentContainer;
 import com.take4.themoment.api.HttpCallback;
-import com.take4.themoment.auth.FirebaseAuthenticator;
+import com.take4.themoment.auth.FirebaseAuthUtils;
 import com.take4.themoment.model.User;
 import com.take4.themoment.task.BaseHttpTask;
 import com.take4.themoment.task.HttpTaskExecutor;
@@ -103,7 +103,7 @@ public class AccountManager {
 
 		int expirationDiffTime = Minutes.minutesBetween(idTokenExpirationTime, DateTime.now()).getMinutes();
 		if (expirationDiffTime > 55) {
-			FirebaseAuthenticator.requestUserIdToken();
+			FirebaseAuthUtils.requestUserIdToken();
 		}
 		return true;
 	}
