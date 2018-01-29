@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "291430050015",
+    "firebase_url": "https://the-moment-379d9.firebaseio.com",
+    "project_id": "the-moment-379d9",
+    "storage_bucket": "the-moment-379d9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:291430050015:android:437acf8885641f96",
+        "android_client_info": {
+          "package_name": "com.take4.themoment.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "291430050015-ahisjbi0jovh0sjevdiuvd8tkjoi2p8m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.take4.themoment",
+            "certificate_hash": "dfcd7b40fe66cf8ace7eb549fb4e49baec5d0ac6"
+          }
+        },
+        {
+          "client_id": "291430050015-ebi4ahua78f7aj2m26lo4rsivjocgaqr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_4WCLAKUl6hMXLCWl_F8cqCMgkx4RCjU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "291430050015-ebi4ahua78f7aj2m26lo4rsivjocgaqr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

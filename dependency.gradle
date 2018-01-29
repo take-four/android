@@ -3,8 +3,12 @@ ext.ver = [
         stetho        : '1.5.0',
         okhttp        : '3.9.1',
         dagger        : '2.11',
-        butterknife   : '9.0.0-SNAPSHOT',
+        butterknife   : '8.8.1',
+        gson          : '2.8.2',
         stetho        : '1.5.0',
+        firebase      : '3.1.0',
+        firebaseAuth  : '11.2.0',
+        facebookAuth  : '4.28.0',
         slf4j         : '1.7.25',
         logbackAndroid: '1.1.1-6',
         junit         : '4.12',
@@ -26,7 +30,7 @@ ext.deps = [
                 // lombok
                 lombok                  : 'org.projectlombok:lombok:1.16.18',
                 // gson
-                gson                    : 'com.google.code.gson:gson:2.8.2',
+                gson                    : "com.google.code.gson:gson:${ver.gson}",
 
                 // butterknife
                 butterknife             : "com.jakewharton:butterknife:${ver.butterknife}",
@@ -53,6 +57,16 @@ ext.deps = [
                 // stetho
                 stetho                  : "com.facebook.stetho:stetho:${ver.stetho}",
                 stethoOkhttp3           : "com.facebook.stetho:stetho-okhttp3:${ver.stetho}",
+
+                // firebase
+                firebaseUI              : "com.firebaseui:firebase-ui-auth:${ver.firebase}",
+
+                // auth
+                firebaseAuth            : "com.google.firebase:firebase-auth:${ver.firebaseAuth}",
+                googleAuth              : "com.google.android.gms:play-services-auth:${ver.firebaseAuth}",
+
+                // facebook
+                facebookSdk             : "com.facebook.android:facebook-android-sdk:${ver.facebookAuth}",
 
                 // android log
                 slf4j                   : "org.slf4j:slf4j-api:${ver.slf4j}",
