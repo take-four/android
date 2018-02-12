@@ -18,8 +18,8 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class FacebookAuthenticator {
-	private static String EMAIL = "email";
-	private static String PERMISSION_PUBLIC_PROFILE = "public_profile";
+	private static final String EMAIL = "email";
+	private static final String PERMISSION_PUBLIC_PROFILE = "public_profile";
 
 	private String accessToken;
 

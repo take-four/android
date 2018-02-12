@@ -6,4 +6,9 @@
     <color name="white">#FFFFFF</color>
     <color name="red">#FF0000</color>
     <color name="black">#222222</color>
+
+    <color name="divider">#DDDDDD</color>
+
+    <color name="icon_primary_color">#CC000000</color>
+
 </resources>

@@ -10,6 +10,7 @@ android {
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "android.com.take4.themoment.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -51,6 +52,7 @@ dependencies {
     implementation deps.supportLib.multidex
     implementation deps.supportLib.v4
     implementation deps.supportLib.compat
+    implementation deps.supportLib.appcompat
     implementation deps.supportLib.recyclerview
     implementation deps.supportLib.design
     implementation deps.supportLib.constraint

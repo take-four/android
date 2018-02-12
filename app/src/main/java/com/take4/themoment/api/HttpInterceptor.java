@@ -13,7 +13,7 @@ import okhttp3.Response;
  */
 
 public class HttpInterceptor implements Interceptor {
-	private static String ID_TOKEN = "Authorization";
+	private static final String ID_TOKEN = "Authorization";
 
 	@Override
 	public Response intercept(Chain chain) throws IOException {

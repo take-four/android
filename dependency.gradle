@@ -23,6 +23,7 @@ ext.deps = [
                 multidex    : 'com.android.support:multidex:1.0.2',
                 v4          : "com.android.support:support-v4:${ver.supportLib}",
                 compat      : "com.android.support:support-compat:${ver.supportLib}",
+                appcompat   : "com.android.support:appcompat-v7:${ver.supportLib}",
                 recyclerview: "com.android.support:recyclerview-v7:${ver.supportLib}",
                 design      : "com.android.support:design:${ver.supportLib}",
                 constraint  : 'com.android.support.constraint:constraint-layout:1.0.2'

@@ -9,24 +9,23 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import com.take4.themoment.PreferenceType;
+import com.take4.themoment.base.BasePreference;
 
 /**
  * Created by jaehyunpark on 2018. 1. 5..
  */
 
 @Singleton
-public class AccountPreference {
+public class AccountPreference extends BasePreference {
 	private static final String USER_ID_TOKEN = "user_id_token";
 	private static final String USER_ID_TOKEN_EXPIRATION = "user_id_token_expiration";
 	private static final String USER_ACCOUNT_ID = "user_account_id";
 	private static final String HAS_ACTIVE_ACCOUNT = "has_active_account";
 	private static final String USER_NAME = "user_name";
 
-	private final SharedPreferences preferences;
-
 	@Inject
 	public AccountPreference(Context context) {
-		this.preferences = context.getSharedPreferences(
+		preferences = context.getSharedPreferences(
 			PreferenceType.ACCOUNT_PREFERENCE.getName(), Context.MODE_PRIVATE);
 	}
 
@@ -68,35 +67,5 @@ public class AccountPreference {
 
 	public String getUserName() {
 		return getString(USER_NAME);
-	}
-
-	public void putInt(@NonNull String key, int value) {
-		SharedPreferences.Editor editor = preferences.edit();
-		editor.putInt(key, value);
-		editor.apply();
-	}
-
-	public int getInt(@NonNull String key) {
-		return preferences.getInt(key, 0);
-	}
-
-	public void putString(@NonNull String key, String value) {
-		SharedPreferences.Editor editor = preferences.edit();
-		editor.putString(key, value);
-		editor.apply();
-	}
-
-	public String getString(@NonNull String key) {
-		return preferences.getString(key, "");
-	}
-
-	public void putBoolean(@NonNull String key, boolean value) {
-		SharedPreferences.Editor editor = preferences.edit();
-		editor.putBoolean(key, value);
-		editor.apply();
-	}
-
-	public boolean getBoolean(@NonNull String key) {
-		return preferences.getBoolean(key, false);
 	}
 }
