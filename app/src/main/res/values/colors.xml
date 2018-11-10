@@ -11,4 +11,6 @@
 
     <color name="icon_primary_color">#CC000000</color>
 
+    <color name="tool_bar_background">#0055FF</color>
+
 </resources>

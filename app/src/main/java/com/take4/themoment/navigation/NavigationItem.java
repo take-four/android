@@ -5,7 +5,9 @@ import android.util.SparseArray;
 import com.take4.themoment.R;
 import com.take4.themoment.moment.feed.MomentFeedFragment;
 import com.take4.themoment.moment.feed.MomentFeedType;
+import com.take4.themoment.moment.like.LikedMomentFragment;
 import com.take4.themoment.moment.map.MomentMapFragment;
+import com.take4.themoment.moment.mine.MyMomentFragment;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,14 +26,14 @@ public enum NavigationItem {
 	MY_ALL_MOMENTS(1, "my_all_moments", R.drawable.ico_placeholder) {
 		@Override
 		public Fragment createFragment() {
-			return MomentFeedFragment.newInstance(MomentFeedType.MY_ALL_FEED);
+			return MyMomentFragment.newInstance();
 		}
 	},
 
 	MY_LIKED_MOMENTS(2, "my_liked_moments", R.drawable.ico_like) {
 		@Override
 		public Fragment createFragment() {
-			return MomentFeedFragment.newInstance(MomentFeedType.MY_LIKED_FEED);
+			return LikedMomentFragment.newInstance();
 		}
 	},
 
