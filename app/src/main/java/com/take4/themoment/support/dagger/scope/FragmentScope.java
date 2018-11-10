@@ -6,10 +6,10 @@ import java.lang.annotation.RetentionPolicy;
 import javax.inject.Scope;
 
 /**
- * Created by jaehyunpark on 2018. 1. 3..
+ * Created by jaehyunpark on 2018. 2. 26..
  */
 
 @Scope
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ActivityScope {
+public @interface FragmentScope {
 }
